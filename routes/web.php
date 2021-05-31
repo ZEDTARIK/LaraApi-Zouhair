@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\StudentController;
-use App\Models\Student;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/student', [StudentController::class, 'index']);
+Route::get('/student/create', [StudentController::class, 'create']);
