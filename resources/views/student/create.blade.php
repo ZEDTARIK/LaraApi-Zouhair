@@ -14,7 +14,7 @@
                     <div class="card-header">Create New Student</div>
                     <div class="card-body">
 
-                        <form method="POST" action="{{route('store')}}" class="form-horizontal">
+                        <form method="POST" action="{{route('student.store')}}" class="form-horizontal">
 
                             @csrf
 

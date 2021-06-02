@@ -14,7 +14,7 @@
                 <div class="card border-primary mb-3">
                     <div class="card-header">List Students</div>
                     <div class="card-body">
-                        <a href="{{ route('create')}}" class="btn btn-outline-primary my-2">Add New Student</a>
+                        <a href="{{ route('student.create')}}" class="btn btn-outline-primary my-2">Add New Student</a>
                         <table class="table table-hover table-sm">
                             <thead>
                                 <tr>

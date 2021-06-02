@@ -39,7 +39,7 @@ class StudentController extends Controller
     {
         $data = $request->all();
         Student::create($data);
-        return redirect()->route('index');
+        return redirect()->route('student.index');
     }
 
     /**
