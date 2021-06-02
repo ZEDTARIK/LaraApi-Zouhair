@@ -26,7 +26,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view ('student.create');
+        return view('student.create');
     }
 
     /**
@@ -59,9 +59,10 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        //
+        $student = Student::findOrfail($id);
+        return view('student.edit', ['student' => $student]);
     }
 
     /**
@@ -71,9 +72,13 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(StoreStudent $request, $id)
     {
-        //
+        $student = Student::findOrfail($id);
+        $student->firstName = $request->input('firstName');
+        $student->lastName = $request->input('lastName');
+        $student->save();
+        return redirect()->route('student.index');
     }
 
     /**

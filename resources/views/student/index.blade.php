@@ -21,6 +21,7 @@
                                     <th>#</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,6 +30,9 @@
                                     <td>{{ $student->id}}</td>
                                     <td>{{ $student->firstName}}</td>
                                     <td>{{ $student->lastName}}</td>
+                                    <td>
+                                        <a href="{{ route('student.edit', ['student' => $student->id ])}}" class="btn btn-sm btn-warning">Edit</a>
+                                    </td>
                                 </tr>
                                 @empty
                                 <tr>Data Not found</tr>
