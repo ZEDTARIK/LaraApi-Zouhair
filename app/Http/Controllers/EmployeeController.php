@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreEmployee;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employee::cursor();
+        return view('employee.index', ['employees' => $employees]);
     }
 
     /**
@@ -24,7 +26,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employee.create');
     }
 
     /**
@@ -33,9 +35,11 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEmployee $request)
     {
-        //
+        $data = $request->all();
+        Employee::create($data);
+        return redirect()->route('employee.index');
     }
 
     /**
@@ -55,9 +59,10 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit($id)
     {
-        //
+        $employee = Employee::findOrfail($id);
+        return view('employee.edit', ['employee' => $employee]);
     }
 
     /**
@@ -67,9 +72,15 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(StoreEmployee $request, $id)
     {
-        //
+        $employee = Employee::findOrfail($id);
+        $employee->FullName = $request->input('FullName');
+        $employee->Email = $request->input('Email');
+        $employee->Adresse = $request->input('Adresse');
+
+        $employee->save();
+        return redirect()->route('employee.index');
     }
 
     /**
