@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreStudent;
 
 class StudentController extends Controller
 {
@@ -34,14 +35,10 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreStudent $request)
     {
-        $student = new Student();
-        $student->studentCode = $request->input('studentCode');
-        $student->firstName = $request->input('firstName');
-        $student->lastName = $request->input('lastName');
-
-        $student->save();
+        $data = $request->all();
+        Student::create($data);
         return redirect()->route('index');
     }
 

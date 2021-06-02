@@ -21,21 +21,48 @@
                             <div class="form-group">
                                 <label for="studentCode" class="col-sm-2 control-label">Student Code</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="studentCode" id="studentCode" placeholder="Student Code">
+                                    <input type="text" class="form-control" name="studentCode" id="studentCode" placeholder="Student Code" value="{{ old('studentCode')}}" >
+                                </div>
+                                <div class="col-sm-4">
+                                    @if($errors->any())
+                                    @foreach($errors->get('studentCode') as $error)
+                                    <span class="alert-danger">
+                                        {{ $error }}
+                                    </span>
+                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="firstName" class="col-sm-2 control-label">First Name</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name">
+                                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name" value="{{ old('firstName')}}">
+                                </div>
+                                <div class="col-sm-4">
+                                    @if($errors->any())
+                                    @foreach($errors->get('firstName') as $error)
+                                    <span class="alert-danger">
+                                        {{ $error }}
+                                    </span>
+                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="lastName" class="col-sm-2 control-label">Last Name</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name">
+                                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" value="{{ old('lastName')}}">
+                                </div>
+                                <div class="col-sm-4">
+                                    @if($errors->any())
+                                    @foreach($errors->get('lastName') as $error)
+                                    <span class="alert-danger">
+                                        {{ $error }}
+                                    </span>
+                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
 
