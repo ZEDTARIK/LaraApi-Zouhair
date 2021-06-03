@@ -1,7 +1,7 @@
 @extends('shared.master')
 @section('content')
 
-    
+
     <div class="panel panel-info">
           <div class="panel-heading">
                 <h3 class="panel-title">List Employees</h3>
@@ -14,6 +14,7 @@
                     <thead>
                         <tr>
                             <th></th>
+                            <th></th>
                             <th>#</th>
                             <th>Full Name</th>
                             <th>Email</th>
@@ -23,19 +24,26 @@
                         @forelse($employees as $employee)
                         <tr>
                             <td>
+                                <form method="POST" action="{{ route('employee.destroy', [$employee->id])}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Deleted</button>
+                                </form>
+                            </td>
+                            <td>
                                 <a href="{{ route('employee.edit', [$employee->id] )}}" class="btn btn-sm btn-warning">Edit</a>
                             </td>
                             <td scope="row">{{ $employee->id}}</td>
                             <td>{{ $employee->FullName}}</td>
                             <td>{{ $employee->Email}}</td>
                         </tr>
-                        @empty 
+                        @empty
                             <tr>No Data</tr>
                         @endforelse
                     </tbody>
                 </table>
           </div>
     </div>
-    
+
 
 @endsection
