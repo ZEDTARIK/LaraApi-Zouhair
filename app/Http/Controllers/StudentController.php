@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreStudent;
+use Facade\Ignition\DumpRecorder\Dump;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -37,8 +38,14 @@ class StudentController extends Controller
      */
     public function store(StoreStudent $request)
     {
+
         $data = $request->all();
         Student::create($data);
+        // save photo
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            Storage::url($file->storeAs('PathPhoto', random_int(1,100).'.'. $file->guessClientExtension()));
+        }
         session()->flash('success', 'SuccessFully Inserted');
         return redirect()->route('student.index');
     }

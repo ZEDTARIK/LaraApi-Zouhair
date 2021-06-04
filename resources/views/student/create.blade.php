@@ -8,7 +8,7 @@
     </div>
     <div class="panel-body">
 
-        <form method="POST" action="{{route('student.store')}}" class="form-horizontal">
+        <form method="POST" action="{{route('student.store')}}" class="form-horizontal" enctype="multipart/form-data">
 
             @csrf
 

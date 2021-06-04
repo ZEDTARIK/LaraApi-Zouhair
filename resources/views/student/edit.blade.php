@@ -8,7 +8,7 @@
     </div>
     <div class="panel-body">
 
-        <form method="POST" action="{{route('student.update', ['student' => $student])}}" class="form-horizontal">
+        <form method="POST" action="{{route('student.update', ['student' => $student])}}" class="form-horizontal" enctype="multipart/form-data">
 
             @csrf
             @method('PUT')
