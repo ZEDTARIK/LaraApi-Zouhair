@@ -39,6 +39,7 @@ class StudentController extends Controller
     {
         $data = $request->all();
         Student::create($data);
+        session()->flash('success', 'SuccessFully Inserted');
         return redirect()->route('student.index');
     }
 
@@ -78,6 +79,7 @@ class StudentController extends Controller
         $student->firstName = $request->input('firstName');
         $student->lastName = $request->input('lastName');
         $student->save();
+        session()->flash('success', 'Student SuccessFully Updated');
         return redirect()->route('student.index');
     }
 
@@ -91,6 +93,7 @@ class StudentController extends Controller
     {
         $student = Student::findOrfail($id);
         $student->delete();
+        session()->flash('success', 'SuccessFully Deleted');
         return redirect()->route('student.index');
     }
 }

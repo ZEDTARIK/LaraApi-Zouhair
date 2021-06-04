@@ -4,6 +4,14 @@
 <div class="panel panel-primary">
     <div class="panel-heading"> List Student </div>
     <div class="panel-body">
+
+        @if(session()->has('success'))
+        <div class="alert alert-success text-center">
+            <strong> {{ session()->get('success')}} </strong>
+        </div>
+        @endif
+
+
         <a href="{{ route('student.create')}}" class="btn btn-primary pull-right">Add New Student</a>
 
         <table class="table table-hover">
