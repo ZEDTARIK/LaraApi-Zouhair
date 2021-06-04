@@ -18,6 +18,7 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th></th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th></th>
@@ -28,6 +29,9 @@
                 @forelse($students as $student)
                 <tr>
                     <td>{{ $student->id}}</td>
+                    <td>
+                        <img src="{{ Storage::url($student->photo ?? null)}} " class="media-object" style="width: 30px">
+                    </td>
                     <td>{{ $student->firstName}}</td>
                     <td>{{ $student->lastName}}</td>
                     <td>
