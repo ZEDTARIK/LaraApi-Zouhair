@@ -39,6 +39,7 @@ class EmployeeController extends Controller
     {
         $data = $request->all();
         Employee::create($data);
+        session()->flash('success', 'Employee Successfully Inserted!');
         return redirect()->route('employee.index');
     }
 
@@ -80,6 +81,7 @@ class EmployeeController extends Controller
         $employee->Adresse = $request->input('Adresse');
 
         $employee->save();
+        session()->flash('success', 'Employee Successfully Updated');
         return redirect()->route('employee.index');
     }
 
@@ -93,6 +95,7 @@ class EmployeeController extends Controller
     {
         $employee = Employee::findOrfail($id);
         $employee->delete();
+        session()->flash('success', 'Employee Successfully Deleted');
         return redirect()->route('employee.index');
     }
 }
