@@ -4,7 +4,7 @@
         <input type="text" class="form-control" name="FullName" id="FullName" placeholder="FullName"
             value="{{ old('FullName', $employee->FullName ?? null )}}">
     </div>
-    @if($errors->any())
+    @if($errors->get('FullName'))
     <div class="col-sm-4 has-error">
         @foreach($errors->get('FullName') as $error )
         <span class="help-block">
@@ -21,7 +21,7 @@
         <input type="text" class="form-control" name="Email" id="Email" placeholder="Email"
             value="{{ old('Email', $employee->Email ?? null )}}">
     </div>
-    @if($errors->any())
+    @if($errors->get('Email'))
     <div class="col-sm-4 has-error">
         @foreach($errors->get('Email') as $error )
         <span class="help-block">
@@ -38,7 +38,7 @@
         <input type="text" class="form-control" name="Adresse" id="Adresse" placeholder="Adresse"
             value="{{ old('Adresse' , $employee->Adresse ?? null )}}">
     </div>
-    @if($errors->any())
+    @if($errors->get('Adresse'))
     <div class="col-sm-4 has-error">
         @foreach($errors->get('Adresse') as $error )
         <span class="help-block">
