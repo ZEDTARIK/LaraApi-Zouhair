@@ -98,4 +98,10 @@ class EmployeeController extends Controller
         session()->flash('success', 'Employee Successfully Deleted');
         return redirect()->route('employee.index');
     }
+
+    public function getEmployees()
+    {
+        $employees = Employee::latest()->get();
+        return $employees;
+    }
 }

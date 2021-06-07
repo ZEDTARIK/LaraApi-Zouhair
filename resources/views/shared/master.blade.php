@@ -46,5 +46,8 @@
             </div>
         </div>
         <script src="{{ mix('/js/app.js')}}"></script>
+        <script src="{{ asset('js/vue.js')}}"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+                @yield('javascript')
     </body>
 </html>
