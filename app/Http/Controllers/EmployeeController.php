@@ -104,4 +104,14 @@ class EmployeeController extends Controller
         $employees = Employee::latest()->get();
         return $employees;
     }
+
+    public function addEmployee(StoreEmployee $request) {
+        $employee = new Employee();
+        $employee->FullName = $request->input('FullName');
+        $employee->Email = $request->input('Email');
+        $employee->Adresse = $request->input('Adresse');
+        $employee->save();
+        session()->flash('success', 'Employee Successfully Inserted!');
+        return Response()->json([$employee);
+    }
 }

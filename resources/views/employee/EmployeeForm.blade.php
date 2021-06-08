@@ -1,7 +1,7 @@
 <div class="form-group">
     <label for="FullName" class="col-sm-2 control-label"> FullName </label>
     <div class="col-sm-4">
-        <input type="text" class="form-control" name="FullName" id="FullName" placeholder="FullName"
+        <input v-model="employee.FullName" type="text" class="form-control" name="FullName" id="FullName" placeholder="FullName"
             value="{{ old('FullName', $employee->FullName ?? null )}}">
     </div>
     @if($errors->get('FullName'))
@@ -18,7 +18,7 @@
 <div class="form-group">
     <label for="Email" class="col-sm-2 control-label"> Email </label>
     <div class="col-sm-4">
-        <input type="text" class="form-control" name="Email" id="Email" placeholder="Email"
+        <input v-model="employee.Email" type="text" class="form-control" name="Email" id="Email" placeholder="Email"
             value="{{ old('Email', $employee->Email ?? null )}}">
     </div>
     @if($errors->get('Email'))
@@ -35,7 +35,7 @@
 <div class="form-group">
     <label for="Adresse" class="col-sm-2 control-label"> Adresse </label>
     <div class="col-sm-4">
-        <input type="text" class="form-control" name="Adresse" id="Adresse" placeholder="Adresse"
+        <input v-model="employee.Adresse" type="text" class="form-control" name="Adresse" id="Adresse" placeholder="Adresse"
             value="{{ old('Adresse' , $employee->Adresse ?? null )}}">
     </div>
     @if($errors->get('Adresse'))

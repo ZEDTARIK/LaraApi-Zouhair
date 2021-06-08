@@ -22,3 +22,4 @@ Route::get('/', function () {
 Route::resource('/student', StudentController::class);
 Route::resource('/employee', EmployeeController::class);
 Route::get('/getEmployees',[ EmployeeController::class, 'getEmployees'])->name('getEmployees');
+Route::post('/addEmployee',[ EmployeeController::class, 'addEmployee'])->name('addEmployee');
