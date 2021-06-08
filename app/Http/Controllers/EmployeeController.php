@@ -112,6 +112,6 @@ class EmployeeController extends Controller
         $employee->Adresse = $request->input('Adresse');
         $employee->save();
         session()->flash('success', 'Employee Successfully Inserted!');
-        return Response()->json([$employee);
+        return Response()->json([$employee]);
     }
 }
