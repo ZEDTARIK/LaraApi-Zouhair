@@ -105,7 +105,8 @@ class EmployeeController extends Controller
         return $employees;
     }
 
-    public function addEmployee(StoreEmployee $request) {
+    public function addEmployee(StoreEmployee $request)
+    {
         $employee = new Employee();
         $employee->FullName = $request->input('FullName');
         $employee->Email = $request->input('Email');
@@ -115,7 +116,7 @@ class EmployeeController extends Controller
         return Response()->json([$employee]);
     }
 
-    public function updateEmployee(StoreEmployee $request) 
+    public function updateEmployee(StoreEmployee $request)
     {
         $id =  $request->id;
         $employee = Employee::findOrfail($id);
@@ -123,6 +124,11 @@ class EmployeeController extends Controller
         $employee->Email = $request->input('Email');
         $employee->Adresse = $request->input('Adresse');
         $employee->save();
-        
+    }
+
+    public function deleteEmployee($id)
+    {
+        $employee = Employee::findOrfail($id);
+        $employee->delete();
     }
 }

@@ -111,8 +111,9 @@
                         <td scope="row">@{{ employee.id}}</td>
                         <td>@{{ employee.FullName}}</td>
                         <td>@{{ employee.Email}}</td>
-                        <td>
+                        <td class="btn-toolbar">
                             <button @click="onEditEmployee(employee)" class="btn btn-warning btn-sm">Edit</button>
+                            <button @click="onDeleteEmployee(employee)" class="btn btn-danger btn-sm">Deleted</button>
                         </td>
                     </tr>
                 </tbody>
@@ -178,7 +179,10 @@
                         }
                     })
                     .catch(error => console.log(error))
-            }   
+            },
+            onDeleteEmployee: function(emp) {
+               console.log(emp.id);
+            }
         },
         created() {
             this.getEmployees();

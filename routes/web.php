@@ -24,3 +24,4 @@ Route::resource('/employee', EmployeeController::class);
 Route::get('/getEmployees',[ EmployeeController::class, 'getEmployees'])->name('getEmployees');
 Route::post('/addEmployee',[ EmployeeController::class, 'addEmployee'])->name('addEmployee');
 Route::put('/updateEmployee',[ EmployeeController::class, 'updateEmployee'])->name('updateEmployee');
+Route::delete('/deleteEmployee/{id}',[ EmployeeController::class, 'deleteEmployee'])->name('deleteEmployee');
