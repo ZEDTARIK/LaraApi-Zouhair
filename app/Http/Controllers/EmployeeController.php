@@ -114,4 +114,15 @@ class EmployeeController extends Controller
         session()->flash('success', 'Employee Successfully Inserted!');
         return Response()->json([$employee]);
     }
+
+    public function updateEmployee(StoreEmployee $request) 
+    {
+        $id =  $request->id;
+        $employee = Employee::findOrfail($id);
+        $employee->FullName = $request->input('FullName');
+        $employee->Email = $request->input('Email');
+        $employee->Adresse = $request->input('Adresse');
+        $employee->save();
+        
+    }
 }

@@ -67,7 +67,8 @@
                 <div class="form-group">
 
                     <div class="col-sm-9">
-                        <button type="button" @click="AddEmployee()" class="btn btn-success btn-sm">Submit</button>
+                        <button v-if="!onEdit" type="button" @click="AddEmployee()" class="btn btn-success btn-sm">Submit</button>
+                        <button v-if="onEdit" @click="UpdateEmployee()" type="button"  class="btn btn-warning btn-sm">Update</button>
                         <button type="reset" @click="openForm = !openForm" class="btn btn-danger btn-sm">Cancel</a>
                     </div>
 
@@ -95,12 +96,13 @@
 
 
             <!-- List Employees-->
-            <table class="table table-hover table-boredred">
+            <table class="table table-hover table-bordless table-responsive">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Full Name</th>
                         <th>Email</th>
+                        <th>actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -109,6 +111,9 @@
                         <td scope="row">@{{ employee.id}}</td>
                         <td>@{{ employee.FullName}}</td>
                         <td>@{{ employee.Email}}</td>
+                        <td>
+                            <button @click="onEditEmployee(employee)" class="btn btn-warning btn-sm">Edit</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -127,6 +132,7 @@
             message: 'List Employees',
             employees: [],
             openForm: false,
+            onEdit : false,
             employee: {
                 FullName: '',
                 Email: '',
@@ -154,7 +160,25 @@
                     })
                     .catch(error => console.log(error))
 
-            }
+            },
+            onEditEmployee: function(employee) {
+                this.onEdit  = true;
+                this.openForm = true;
+                this.employee = employee;
+            },
+            UpdateEmployee: function () {
+                axios.put('http://localhost:8000/updateEmployee', this.employee)
+                    .then(res => {
+                        this.onEdit = false;
+                        this.openForm = false;
+                        this.employee = {
+                            FullName: '',
+                            Email: '',
+                            Adresse: ''
+                        }
+                    })
+                    .catch(error => console.log(error))
+            }   
         },
         created() {
             this.getEmployees();
